@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "vehicle")
-public class Vehicle {
+public class VehicleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;

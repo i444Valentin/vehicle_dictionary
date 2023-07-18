@@ -1,4 +1,4 @@
-package com.dictionary.vehicle.vehicle_dictionary.model;
+package com.dictionary.vehicle.vehicle_dictionary.model.dao;
 
 import lombok.Value;
 

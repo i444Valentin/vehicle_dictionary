@@ -1,6 +1,6 @@
 package com.dictionary.vehicle.vehicle_dictionary.service;
 
-import com.dictionary.vehicle.vehicle_dictionary.model.Vehicle;
+import com.dictionary.vehicle.vehicle_dictionary.model.dao.Vehicle;
 
 import java.util.List;
 

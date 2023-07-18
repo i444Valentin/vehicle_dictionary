@@ -2,7 +2,7 @@ package com.dictionary.vehicle.vehicle_dictionary.service;
 
 import com.dictionary.vehicle.vehicle_dictionary.entity.VehicleEntity;
 import com.dictionary.vehicle.vehicle_dictionary.mapper.VehicleToEntityMapper;
-import com.dictionary.vehicle.vehicle_dictionary.model.Vehicle;
+import com.dictionary.vehicle.vehicle_dictionary.model.dao.Vehicle;
 import com.dictionary.vehicle.vehicle_dictionary.repository.VehicleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

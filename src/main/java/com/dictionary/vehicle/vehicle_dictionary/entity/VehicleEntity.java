@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "vehicle")
 public class VehicleEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     String brand;

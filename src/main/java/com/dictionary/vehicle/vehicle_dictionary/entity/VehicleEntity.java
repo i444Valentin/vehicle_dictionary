@@ -19,9 +19,9 @@ public class VehicleEntity {
     String brand;
     String model;
     String category;
-    String gov_number;
+    String number;
     String type;
     String manufactured;
     @Nullable
-    boolean has_trailer;
+    boolean trailer;
 }

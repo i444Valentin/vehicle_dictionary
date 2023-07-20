@@ -3,7 +3,7 @@ package com.dictionary.vehicle.vehicle_dictionary.model.dto;
 import lombok.Data;
 
 @Data
-public class VehicleRequest {
+public class VehicleResponse {
     String brand;
     String model;
     String category;

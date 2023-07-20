@@ -25,23 +25,28 @@ public class VehicleController {
     }
 
     @GetMapping("/search")
-    public List<Vehicle> getVehicleByHisData(@RequestParam(name="brand") String brand,
+    public List<VehicleResponse> getVehicleByHisData(@RequestParam(name="brand") String brand,
                                                      @RequestParam(name="model") String model,
                                                      @RequestParam(name="category") String category,
                                                      @RequestParam(name="number") String number,
                                                      @RequestParam(name="year") String year){
         List<Vehicle> vehicles = vehicleService.getVehiclesByBrandOrModelOrCategoryOrNumberOrYear(brand, model, category, number, year);
-//        List<VehicleResponse> response = new ArrayList<>();
-//        for (Vehicle vehicle: vehicles){
-//            response.add(mapper.VehicleToVehicleResponse(vehicle));
-//        }
-        return vehicles;
+        List<VehicleResponse> response = new ArrayList<>();
+        for (Vehicle vehicle: vehicles){
+            response.add(mapper.VehicleToVehicleResponse(vehicle));
+        }
+        return response;
 
     }
 
     @GetMapping
-    public List<Vehicle> getAllVehicles() {
-        return vehicleService.getAllVehicles();
+    public List<VehicleResponse> getAllVehicles() {
+        List<Vehicle> vehicles = vehicleService.getAllVehicles();
+        List<VehicleResponse> response = new ArrayList<>();
+        for (Vehicle vehicle: vehicles){
+            response.add(mapper.VehicleToVehicleResponse(vehicle));
+        }
+        return response;
     }
 
     @PostMapping

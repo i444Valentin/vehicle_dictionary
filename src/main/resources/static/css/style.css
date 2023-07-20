@@ -13,13 +13,16 @@ th,td {
     text-align: left;
 
 }
+h1,text {
+    font-family: Arial, sans-serif;
+}
 form {
-    padding: 3px;
+    padding-top: 15px;
     size: auto;
 
 }
 
 div{
-    padding: 12px;
+    padding-left: 1px;
 }
 

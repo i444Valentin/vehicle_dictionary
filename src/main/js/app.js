@@ -76,6 +76,7 @@ class VehicleList extends React.Component{
                 </tbody>
             </table>
             <div>
+                <text>Найти транспортное средство: </text>
                 <form
                     id="SearchBar"
                     className="space-x-0.5 flex"

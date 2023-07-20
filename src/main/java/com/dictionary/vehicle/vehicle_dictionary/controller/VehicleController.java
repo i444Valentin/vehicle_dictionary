@@ -1,11 +1,11 @@
 package com.dictionary.vehicle.vehicle_dictionary.controller;
 
 import com.dictionary.vehicle.vehicle_dictionary.mapper.VehicleToDtoMapper;
-import com.dictionary.vehicle.vehicle_dictionary.mapper.VehicleToEntityMapper;
 import com.dictionary.vehicle.vehicle_dictionary.model.dao.Vehicle;
 import com.dictionary.vehicle.vehicle_dictionary.model.dto.VehicleRequest;
 import com.dictionary.vehicle.vehicle_dictionary.model.dto.VehicleResponse;
 import com.dictionary.vehicle.vehicle_dictionary.service.VehicleService;
+import com.dictionary.vehicle.vehicle_dictionary.service.consumer.SearchCriteria;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +30,14 @@ public class VehicleController {
                                                      @RequestParam(name="category") String category,
                                                      @RequestParam(name="number") String number,
                                                      @RequestParam(name="year") String year){
-        List<Vehicle> vehicles = vehicleService.getVehiclesByBrandOrModelOrCategoryOrNumberOrYear(brand, model, category, number, year);
+        List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        params.add(new SearchCriteria("brand",":",brand));
+        params.add(new SearchCriteria("model",":",model));
+        params.add(new SearchCriteria("category",":",category));
+        params.add(new SearchCriteria("number",":",number));
+        params.add(new SearchCriteria("manufactured",":",year));
+
+        List<Vehicle> vehicles = vehicleService.searchVehiclesByCriteria(params);
         List<VehicleResponse> response = new ArrayList<>();
         for (Vehicle vehicle: vehicles){
             response.add(mapper.VehicleToVehicleResponse(vehicle));

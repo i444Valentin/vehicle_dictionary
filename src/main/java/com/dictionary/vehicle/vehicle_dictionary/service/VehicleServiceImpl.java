@@ -36,6 +36,16 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
+    public List<Vehicle> getVehiclesByBrandOrModelOrCategoryOrNumberOrYear(String brand,String model, String category, String number, String year) {
+        Iterable<VehicleEntity> iterable = vehicleRepository.findVehicleByBrandOrModelOrCategoryOrNumberOrManufactured(brand, model, category, number, year);
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        for (VehicleEntity vehicleEntity : iterable) {
+            vehicles.add(mapper.entityVehicleToVehicle(vehicleEntity));
+        }
+        return vehicles;
+    }
+
+    @Override
     public void addVehicle(Vehicle vehicle) {
         VehicleEntity vehicleEntity = mapper.vehicleToVehicleEntity(vehicle);
         vehicleRepository.save(vehicleEntity);

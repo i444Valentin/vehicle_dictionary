@@ -21,11 +21,34 @@ class App extends React.Component {
 
     render() {
         return (
-            <VehicleList vehicles={this.state.vehicleEntities}/>
+            <div>
+                <VehicleList vehicles={this.state.vehicleEntities}/>
+                <SearchBar/>
+            </div>
         )
     }
 }
+function SearchBar() {
+    return (
+        <form
+            id="SearchBar"
+            className="space-x-0.5 flex"
+            onSubmit={(e) => {
+                e.preventDefault();
 
+            }}
+        >
+            <input type="string" className="vehicle-filter" placeholder="Марка" />
+            <input type="string" className="vehicle-filter" placeholder="Модель" />
+            <input type="string" className="vehicle-filter" placeholder="Категория"/>
+            <input type="string" className="vehicle-filter" placeholder="Гос. номер"/>
+            <input type="string" className="vehicle-filter" placeholder="Год выпуска"/>
+            <button className="button-search">
+                Найти
+            </button>
+        </form>
+    );
+}
 class VehicleList extends React.Component{
     render() {
         const vehicles = this.props.vehicles.map(vehicle =>

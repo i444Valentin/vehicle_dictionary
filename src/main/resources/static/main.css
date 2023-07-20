@@ -8,4 +8,12 @@ th,td {
     padding: 0.5rem;
     text-align: left;
 }
+form {
+    padding-left: 3px;
+
+}
+
+div{
+    padding: 12px;
+}
 

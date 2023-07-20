@@ -1,5 +1,9 @@
 table {
     border-collapse: collapse;
+    font-style: normal;
+    font-family: Arial, sans-serif;
+    size: auto;
+
 }
 
 th,td {
@@ -7,9 +11,11 @@ th,td {
     border: 1px solid #999;
     padding: 0.5rem;
     text-align: left;
+
 }
 form {
-    padding-left: 3px;
+    padding: 3px;
+    size: auto;
 
 }
 

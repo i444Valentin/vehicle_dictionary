@@ -10,6 +10,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {vehicleEntities: []};
+        this.searchVehicles = this.searchVehicles.bind(this)
     }
 
     componentDidMount() {
@@ -18,43 +19,48 @@ class App extends React.Component {
         });
     }
 
+    searchVehicles(brand, model, category, number, year){
+        client({method: 'GET', path:'/api/vehicles/search?brand=' + brand
+                +'&model=' + model
+                + '&category=' + category
+                +'&number=' + number
+                + '&year=' + year
+        }).done(response =>{
+            this.setState({vehicleEntities: response.entity});
+                });
+    }
 
     render() {
         return (
             <div>
-                <VehicleList vehicles={this.state.vehicleEntities}/>
-                <SearchBar/>
+                <VehicleList vehicles={this.state.vehicleEntities}
+                searchVehicles={this.searchVehicles}/>
             </div>
         )
     }
 }
-function SearchBar() {
-    return (
-        <form
-            id="SearchBar"
-            className="space-x-0.5 flex"
-            onSubmit={(e) => {
-                e.preventDefault();
-
-            }}
-        >
-            <input type="string" className="vehicle-filter" placeholder="Марка" />
-            <input type="string" className="vehicle-filter" placeholder="Модель" />
-            <input type="string" className="vehicle-filter" placeholder="Категория"/>
-            <input type="string" className="vehicle-filter" placeholder="Гос. номер"/>
-            <input type="string" className="vehicle-filter" placeholder="Год выпуска"/>
-            <button className="button-search">
-                Найти
-            </button>
-        </form>
-    );
-}
 class VehicleList extends React.Component{
+    constructor(props) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(e){
+        e.preventDefault();
+        const brand = ReactDOM.findDOMNode(this.refs.brand).value;
+        const model = ReactDOM.findDOMNode(this.refs.model).value;
+        const category = ReactDOM.findDOMNode(this.refs.category).value;
+        const number = ReactDOM.findDOMNode(this.refs.number).value;
+        const year = ReactDOM.findDOMNode(this.refs.year).value;
+        this.props.searchVehicles(brand,model,category,number,year);
+
+    }
     render() {
         const vehicles = this.props.vehicles.map(vehicle =>
             <Vehicle key={vehicle} vehicle={vehicle}/>
         );
         return (
+            <div>
             <table>
                 <tbody>
                 <tr>
@@ -69,6 +75,23 @@ class VehicleList extends React.Component{
                 {vehicles}
                 </tbody>
             </table>
+            <div>
+                <form
+                    id="SearchBar"
+                    className="space-x-0.5 flex"
+                    onSubmit={this.handleSubmit}
+                >
+                    <input type="string" className="vehicle-filter" ref="brand" placeholder="Марка" />
+                    <input type="string" className="vehicle-filter" ref="model" placeholder="Модель" />
+                    <input type="string" className="vehicle-filter" ref="category" placeholder="Категория"/>
+                    <input type="string" className="vehicle-filter" ref="number" placeholder="Гос. номер"/>
+                    <input type="string" className="vehicle-filter" ref="year" placeholder="Год выпуска"/>
+                    <button className="button-search">
+                        Найти
+                    </button>
+                </form>
+            </div>
+            </div>
         )
     }
 }

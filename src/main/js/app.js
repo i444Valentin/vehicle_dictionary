@@ -3,7 +3,7 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
 
-
+//Основной компонент, состоящий из более маленьких
 class App extends React.Component {
 
 
@@ -19,6 +19,7 @@ class App extends React.Component {
         });
     }
 
+    //Поиск ТС по их критерию
     searchVehicles(brand, model, category, number, year){
         client({method: 'GET', path:'/api/vehicles/search?brand=' + brand
                 +'&model=' + model
@@ -39,12 +40,14 @@ class App extends React.Component {
         )
     }
 }
+//Компонент Список ТС, представляет собой заголовки столбцов
 class VehicleList extends React.Component{
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    //Обработка подтверждения формы (нажатие кнопки Найти)
     handleSubmit(e){
         e.preventDefault();
         const brand = ReactDOM.findDOMNode(this.refs.brand).value;
@@ -76,7 +79,7 @@ class VehicleList extends React.Component{
                 </tbody>
             </table>
             <div>
-                <text>Найти транспортное средство: </text>
+                <div>Найти транспортное средство: </div>
                 <form
                     id="SearchBar"
                     className="space-x-0.5 flex"
@@ -97,6 +100,7 @@ class VehicleList extends React.Component{
     }
 }
 
+//Компонент ТС, выводящий данные в таблицу, представляет собой строки таблицы
 class Vehicle extends React.Component{
     render() {
         return (

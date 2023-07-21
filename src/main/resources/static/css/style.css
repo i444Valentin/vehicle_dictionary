@@ -13,7 +13,7 @@ th,td {
     text-align: left;
 
 }
-h1,text {
+h1 {
     font-family: Arial, sans-serif;
 }
 form {
@@ -24,5 +24,6 @@ form {
 
 div{
     padding-left: 1px;
+    font-family: Arial, sans-serif;
 }
 

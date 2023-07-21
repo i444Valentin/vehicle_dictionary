@@ -8,6 +8,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.function.Consumer;
+
+/**
+ * Класс, отвечающий за прием входных
+ * критериев и преобразование их в запрос,
+ * позволяющий получить данные из базы данных
+ * на основе критериев
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -11,7 +11,7 @@ import org.mapstruct.Mapping;
 public interface VehicleToDtoMapper {
     Vehicle VehicleRequestToVehicle(VehicleRequest vehicleRequest);
     VehicleResponse VehicleToVehicleResponse(Vehicle vehicle);
-    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "id", ignore = true) //игнорируем id, т.к его нет в VehicleResponse
     Vehicle VehicleResponseToVehicle(VehicleResponse vehicleResponse);
 
 }

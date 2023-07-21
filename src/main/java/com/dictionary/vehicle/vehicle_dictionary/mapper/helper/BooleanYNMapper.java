@@ -2,7 +2,13 @@ package com.dictionary.vehicle.vehicle_dictionary.mapper.helper;
 
 import org.springframework.stereotype.Component;
 
+
 @Component
+/**
+ * Вспомогательный класс для VehicleToDtoMapper
+ * при маппинге данных
+ *
+ */
 public class BooleanYNMapper {
     public String asString(Boolean bool) {
         return null == bool ?

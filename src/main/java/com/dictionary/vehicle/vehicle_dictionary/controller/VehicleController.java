@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Rest-Контроллер, отвечающий за api доступа к данным
+ *
+ */
 @RestController()
 @RequestMapping("/api/vehicles")
 @RequiredArgsConstructor
@@ -25,11 +29,11 @@ public class VehicleController {
     }
 
     @GetMapping("/search")
-    public List<VehicleResponse> getVehicleByHisData(@RequestParam(name="brand") String brand,
-                                                     @RequestParam(name="model") String model,
-                                                     @RequestParam(name="category") String category,
-                                                     @RequestParam(name="number") String number,
-                                                     @RequestParam(name="year") String year){
+    public List<VehicleResponse> getVehiclesByCriteria(@RequestParam(name="brand") String brand,
+                                                       @RequestParam(name="model") String model,
+                                                       @RequestParam(name="category") String category,
+                                                       @RequestParam(name="number") String number,
+                                                       @RequestParam(name="year") String year){
         List<SearchCriteria> params = new ArrayList<SearchCriteria>();
         params.add(new SearchCriteria("brand",":",brand));
         params.add(new SearchCriteria("model",":",model));
